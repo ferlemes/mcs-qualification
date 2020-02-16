@@ -1,0 +1,144 @@
+%!TeX root=../tese.tex
+
+%% ------------------------------------------------------------------------- %%
+\chapter{Trabalhos relacionados}
+\label{cap:trabalhos-relacionados}
+
+Foi realizada uma pesquisa por trabalhos semelhantes e a maioria dos trabalhos
+encontrados possui diferenças significantes em relação a proposta desta pesquisa.
+
+A busca foi realizada tanto nas buscas gerais do Google quanto no Google Scholar
+com as seguintes palavras-chave:
+
+\begin{itemize}
+  \item anomaly detection logs
+  \item anomaly detection log records
+  \item anomaly detection application
+  \item anomaly detection application logs
+  \item anomaly detection distributed application
+  \item anomaly detection http
+  \item anomaly detection load balancer
+\end{itemize}
+
+Os trabalhos similares encontrados serão detalhados a seguir.
+
+\section{Anomaly Detection for Application Log Data \citep{grover}}
+\label{sec:anomaly-detection-for-application-log-data}
+
+Este trabalho possui uma proposta similar de detectar falhas em uma aplicação em
+execução de forma não invasiva, detectando anomalias através da saída de texto
+da aplicação.
+
+A extração de características é bem diferente e várias abordagens para detecção
+de anomalia são propostas, como: detecção baseada em estatística, agrupamento por
+similaridade (``clustering''), distância de uma ocorrência ao grupo similar mais
+próximo, aprendizado supervisionado e redes neurais.
+
+Esta pesquisa propõe utilizar a detecção baseada em estatística por acreditar que
+é o método mais adequado ao cenário, entretanto estas opções serão melhor estudadas
+para serem consideradas na escrita da dissertação.
+
+Em relação à classificação, este trabalho se restringe somente a detecção de uma
+anomalia na aplicação sem classificá-la, pois a idéia é somente apontar entre as
+milhares de linhas de saída da aplicação o que está fora do padrão.
+
+\section{Anomaly Detection in Log Records \citep{rastogi}}
+\label{sec:anomaly-detection-in-log-records}
+
+Este outro trabalho também trata da detecção de anomalia baseada em arquivos de
+logs de um servidor web Apache, porém com uma abordagem bem mais simplificada.
+
+A detecção de anomalia proposta é sobre a quantidade de requisições HTTP que
+partem de uma mesma origem (endereço IP) ao longo do tempo, e o foco da análise
+é de predizer estas ocorrências em um futuro próximo.
+
+Apesar da ideia de detecção ser similar, o propósito do artigo é mais focado em
+prever o uso futuro dos servidores web, o que é bem distinto desta pesquisa.
+
+\section{PAD: Performance Anomaly Detection in Multi-server Distributed Systems \citep{pad}}
+\label{sec:pad}
+
+Esta publicação descreve um software que foi criado para analisar anomalias de
+desempenho em aplicações distribuídas que possuem alta demanda e pedem uma baixa
+latência de resposta.
+
+Ela difere bastante por ser mais invasiva e requerer contadores de recursos
+(CPU, memória e I/O), assim como contadores de mensagens processadas e número de
+processos em uma máquina. Adicionalmente ela utiliza uma quantidade destas
+características na casa das centenas, o que é computacionalmente caro.
+
+Também é importante ressaltar que o propósito desta aplicação é de ser utilizada
+na execução de um teste de desempenho para análise das anomalias e não monitora
+o desempenho de uma aplicação em produção como a que esta pesquisa pretende fazer.
+
+\section{Measuring normality in HTTP traffic for anomaly-based intrusion detection \citep{tapiador}}
+\label{sec:measuring-normality-in-http-traffic-for-anomaly-based-intrusion-detection}
+
+Neste trabalho o foco está na detecção de intrusão através de anomalias nas
+requisições enviadas a uma aplicação web.
+
+A detecção de anomalia é feita de uma forma bastante diferente utilizando cadeias
+de Markov para modelar as sequências regulares que a aplicação recebe, marcando
+uma sequência de requisições de baixa probabilidade de ocorrência como uma anomalia.
+
+\section{An Anomaly-Based Approach for Intrusion Detection in Web Traffic \citep{TorranoGimnez2010AnAA}}
+\label{sec:an-anomaly-based-approach-for-intrusion-detection-in-web-traffic}
+
+Este outro trabalho propõe a criação de um firewall de requisições a aplicações web,
+porém ele requer um treinamento manual que descreve o que deve ser considerado
+anomalia ou não.
+
+Apesar do título indicar alguma relação com o que está sendo estudado, ele difere
+bastante por não aprender automaticamente o que é anomalia ou não, e pela ação de
+bloqueio da requisição diante da anomalia percebida.
+
+\section{Performance Anomaly Detection in Microservice Architectures Under Continuous Change \citep{dullmann}}
+\label{sec:performance-anomaly-detection-in-microservice-architectures-under-continuous-change}
+
+Esta dissertação de mestrado é a que mais se aproxima do que esta pesquisa propõe
+por abordar o contexto de micro-serviços e se basear na performance da aplicação.
+
+Algumas diferenças podem ser apontadas na etapa de detecção de anomalias, a qual
+confia em um limiar pré-determinado para apontar quais requisições são anômalas e
+nenhuma tentativa de aprendizado do comportamento da aplicação é utilizada.
+
+O autor menciona problemas interessantes que esta pesquisa deve se deparar, como
+atrasos iniciais devido a criação de estruturas de dados, cache ou conexões com
+bancos de dados na inicialização de uma instância da aplicação. Este cenário será
+verificado durante a pesquisa para avaliar se é possível classificá-lo ou suprimir
+alertas gerados por este motivo.
+
+\section{Comparativo}
+\label{sec:comparativo}
+
+Na tabela 6.1 serão sumarizadas as diferenças entre os trabalhos relacionados
+e esta pesquisa: 
+
+Uma vez identificados alguns trabalhos relacionados, temos algumas ideias de
+alternativas para detecção de anomalias e também um cenário novo que deverá ser
+levado em conta durante os testes do projeto.
+
+Durante o desenvolvimento do projeto e escrita da dissertação, novas pesquisas
+serão realizadas para avaliar o surgimento de outros trabalhos relacionados.
+
+É importante ressaltar que esta pesquisa se torna relevante por não haver
+nenhuma outra com a mesma proposta, e também por ser de interesse da indústria
+de software, uma vez que tenho apoio da empresa HP Inc. na forma de tempo para
+inovação e acesso a dados.
+
+\begin{sidewaystable}
+\centering
+\caption{Comparativo entre trabalhos relacionados e esta pesquisa.}
+\begin{tabular}{lcccccc}
+Trabalho relacionado             & Utiliza detecção & Utiliza    & Dispensa       & Realiza       & Realiza o        \\
+                                 & de anomalia      & logs da    & instrumentação & classificação & monitoramento    \\
+                                 & automática       & aplicação  & do código      & de problemas  & de uma aplicação \\
+\hline
+6.1\citep{grover}                & \checkmark       & \checkmark & \checkmark     &               & \checkmark       \\
+6.2\citep{rastogi}               & \checkmark       & \checkmark & \checkmark     &               & \checkmark       \\
+6.3\citep{pad}                   & \checkmark       & \checkmark &                &               &                  \\
+6.4\citep{tapiador}              & \checkmark       & \checkmark & \checkmark     &               & \checkmark       \\
+6.5\citep{TorranoGimnez2010AnAA} &                  & \checkmark & \checkmark     &               & \checkmark       \\
+6.6\citep{dullmann}              &                  & \checkmark & \checkmark     & \checkmark    & \checkmark       \\
+\end{tabular}
+\end{sidewaystable}

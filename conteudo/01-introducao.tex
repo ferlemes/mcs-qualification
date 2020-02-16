@@ -1,0 +1,70 @@
+%!TeX root=../tese.tex
+
+%% ------------------------------------------------------------------------- %%
+\chapter{Introdução}
+\label{cap:introducao}
+
+Com a popularização dos computadores e de diversos equipamentos ``\textit{smart}'',
+como telefones celulares e televisores, houve um aumento significativo do contato
+das pessoas com sistemas de software. Os sistemas de software utilizados por estes
+equipamentos são os mais diversos, variando de programas para troca de mensagens,
+passando por comércio de bens e serviços, até compartilhamento de conteúdo.
+
+Em virtude do grande número de usuários que estes sistemas possuem, eles precisam
+ser desenvolvidos visando a alta disponibilidade, garantindo a satisfação do usuário
+e assegurando seu sucesso. A alta disponibilidade de um sistema é definida pelo
+número de noves na porcentagem da garantia que a aplicação estará em funcionamento.
+Por exemplo, uma aplicação com quatro noves deve estar 99,99\% do tempo disponível
+para ser acessada.
+
+Apesar de quatro noves parecer uma disponibilidade bastante alta, o 0,01\% do tempo
+que o sistema pode ficar indisponível representa 52 minutos e 33 segundos em um ano,
+o que é uma quantidade de tempo relativamente alta.
+
+Independente do número de noves, é certo que falhas irão ocorrer e sistemas estarão
+sujeitos a degradação ou indisponibilidade, afetando uma grande quantidade de usuários.
+
+Um cenário comum de degradação é de um sistema que passa a receber um número grande
+de acessos repentinamente e, por não estar dimensionado para esta carga, passa a
+demorar mais tempo para executar as ações solicitadas. Outro cenário possível é a
+indisponibilidade do sistema, onde são retornados erros para as ações solicitadas,
+por conta de uma falha ao acessar algum recurso como um banco de dados, ou outro
+sistema, do qual ele depende.
+
+Alguns cenários de falha não ocorrem imediatamente, mas dão sinais de que algo está
+errado com alguma antecedência, e isto pode ser observado através do comportamento
+do sistema.
+
+Técnicas de detecção de anomalias são utilizadas para modelar um comportamento,
+dado um conjunto de dados, e após este modelo ter sido criado, é possível avaliar
+o quanto um novo conjunto de dados se parece com o que já foi visto durante a etapa
+de modelagem.
+
+Utilizando dados de requisições que foram processadas por um sistema para modelar
+o seu comportamento, e determinando um valor de probabilidade limite para o que deve
+ser considerado normal ou não, é possível identificar requisições que foram
+processadas pelo sistema que sofreram alguma anomalia.
+
+A partir de casos anômalos identificados em um sistema e de suas causas, é possível
+realizar o treinamento de um algoritmo de aprendizado de máquina para dado um caso
+anômalo determinar a causa mais provável desta anomalia. Com este algoritmo treinado
+e diante de novas ocorrências de anomalia, podemos identificar com uma boa precisão
+o comportamento anormal de um sistema e a causa dele.
+
+Existem diversos sistemas comerciais que fazem monitoramento de sistemas, em diversas
+profundidades e com diferentes funcionalidades, como
+NewRelic\footnote[1]{\url{http://www.newrelic.com}},
+Dynatrace\footnote[2]{\url{http://www.dynatrace.com}}
+e Datadog\footnote[3]{\url{http://www.datadoghq.com}}, entretanto esta pesquisa irá focar
+somente no monitoramento de requisições HTTP/HTTPS enviadas a uma aplicação, com o
+objetivo de limitar o amplo escopo existente na área de monitoramento de aplicações.
+
+Dadas estas informações, o que esta pesquisa propõe é avaliar a utilização de
+algoritmos de aprendizado de máquina para detecção e classificação de anomalias,
+auxiliando a diagnosticar problemas em um sistema de software, melhorando a garantia
+de disponibilidade e por consequência a satisfação dos usuários.
+
+Este documento irá apresentar a proposta de pesquisa iniciando por conceitos básicos
+necessários para o entendimento do problema, passará pela metodologia e proposta da
+solução, irá expor um experimento preliminar e finalizará com comparações a trabalhos
+relacionados similares.

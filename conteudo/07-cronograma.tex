@@ -1,0 +1,43 @@
+%!TeX root=../tese.tex
+
+%% ------------------------------------------------------------------------- %%
+\chapter{Cronograma}
+\label{cap:cronograma}
+
+O experimento relatado no capítulo 5 indica que a pesquisa proposta é viável,
+apesar de ser utilizado um cenário bastante simples, onde só foram realizadas
+requisições de um único tipo e os registros não tiveram variação no tipo de
+resposta recebida.
+
+Para a escrita da dissertação as seguintes atividades serão necessárias:
+
+\begin{enumerate}
+  \item Coleta de registros de um serviço real em ambiente de produção, homologação ou qualificação de aplicações web da empresa HP Inc Brasil;
+  \item Realização de testes de detecção de anomalias com os dados do serviço real;
+  \item Adequação de algoritmos caso necessário;
+  \item Realização de testes de classificação das anomalias detectadas;
+  \item Implementação de uma aplicação para fazer o monitoramento de registros de um Application Load Balancer da AWS;
+  \item Avaliação da aplicação implementada e coleta de resultados.
+\end{enumerate}
+
+As atividades elencadas serão executadas nos próximo 12 meses, iniciando
+em janeiro de 2020, conforme a tabela abaixo, com o objetivo de concluir
+a dissertação ao final de 2020.
+
+\begin{figure}
+  \centering
+  \begin{ganttchart}{2020-01}{2020-12}
+    \gantttitlecalendar{year,month=shortname} \ganttnewline
+
+    \ganttbar[progress=0]{Atividade 1}{2020-01}{2020-01} \ganttnewline
+    \ganttbar[progress=0]{Atividade 2}{2020-02}{2020-03} \ganttnewline
+    \ganttbar[progress=0]{Atividade 3}{2020-02}{2020-05} \ganttnewline
+	\ganttbar[progress=0]{Atividade 4}{2020-04}{2020-05} \ganttnewline
+	\ganttbar[progress=0]{Atividade 5}{2020-06}{2020-08} \ganttnewline
+	\ganttbar[progress=0]{Atividade 6}{2020-08}{2020-11} \ganttnewline
+	\ganttbar[progress=0]{Dissertação}{2020-06}{2020-12} \ganttnewline
+    \ganttmilestone{Submissão}{2020-12}
+  \end{ganttchart}
+
+  \caption{Cronograma para conclusão da pesquisa.\label{fig:gantt}}
+\end{figure}

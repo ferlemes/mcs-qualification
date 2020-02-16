@@ -1,0 +1,29 @@
+%!TeX root=../tese.tex
+
+\begin{resumo}{port}
+A proposta desta pesquisa é de investigar a detecção de anomalias em uma
+aplicação web de maneira automática, classificando-as de forma que ações
+corretivas possam ser programadas para manter a aplicação funcionando
+adequadamente.
+
+Serão consideradas anomalias as requisições a uma aplicação web que
+demoraram mais tempo que o usual, ou que apresentaram erros em suas
+respostas. Este tipo de ocorrência pode indicar um problema na aplicação,
+na infraestrutura em que ela está sendo executada ou em alguma outra
+aplicação da qual esta depende.
+
+O sistema de detecção de anomalias utilizará como dados de entrada os
+registros das requisições enviadas a uma aplicação web, os quais podem
+ser extraídos de um balanceador de carga ou servidor proxy, sem a
+necessidade de instrumentar ou alterar o código da aplicação.
+
+Para a detecção das anomalias será empregado um mecanismo de aprendizado
+de máquina autônomo baseado em estatísticas. Para classificação das
+anomalias será utilizado um algoritmo de regressão logística que será
+pré-treinado com alguns cenários já conhecidos.
+
+A importância deste estudo é de que, em um contexto de micro-serviços,
+este tipo de monitoramento é essencial para evitar que problemas em um
+componente possam eventualmente comprometer outros e colocar todo o
+sistema de software em uma situação degradada ou comprometida.
+\end{resumo}
